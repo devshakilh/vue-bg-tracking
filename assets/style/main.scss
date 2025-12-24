@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Scrollbar hide
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hide-scrollbar {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("/public/fonts/lato-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("/public/fonts/lato-medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("/public/fonts/lato-semibold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("/public/fonts/lato-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "Fallback";
+  src: local("Arial");
+}
+
+html {
+  @apply text-[15px] sm:text-[16px];
+}
+
+body {
+  @apply relative; // fixes iOS bug with overflow hidden still allowing to scroll
+  @apply font-sans;
+  @apply bg-light-50;
+  @apply text-dark-500;
+}
+
+::selection {
+  @apply bg-primary-500;
+  @apply text-white;
+}
+
+[data-disable-scroll="true"] {
+  @apply overflow-hidden touch-none select-none overscroll-contain;
+}
+
+[data-disable-scroll="true"] * {
+  @apply overscroll-contain;
+}
+
+input::placeholder {
+  @apply text-dark-32% text-sm;
+}
+
+span {
+  line-height: 1.25 !important;
+}
+
+// Page and default fade-in transitions
+.page-enter-active,
+.page-leave-active,
+.v-enter-active,
+.v-leave-active {
+  @apply duration-150 ease-linear;
+}
+
+.page-enter-from,
+.page-leave-to,
+.v-enter-from,
+.v-leave-to {
+  @apply opacity-0;
+}
